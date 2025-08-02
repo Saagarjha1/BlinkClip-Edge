@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>QuickMark</title>
+  <style>
+    body { font-family: Arial; width: 300px; padding: 10px; }
+    .clip { padding: 5px; border: 1px solid #ccc; margin-bottom: 5px; font-size: 14px; background: #f9f9f9; border-radius: 5px; }
+    #login-form, #user-info { display: none; }
+    #login-form.active, #user-info.active { display: block; }
+    input, button { width: 100%; margin: 5px 0; padding: 6px; }
+    #error { color: red; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div id="login-form">
+    <h3>Login</h3>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button id="login-btn">Login</button>
+    <button id="signup-btn">Sign Up</button>
+    <div id="error"></div>
+  </div>
+
+  <div id="user-info">
+    <h3>Welcome, <span id="username"></span></h3>
+    <button id="logout-btn">Logout</button>
+  </div>
+
+  <h4>Saved Clips</h4>
+  <div id="clipList">Loading...</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

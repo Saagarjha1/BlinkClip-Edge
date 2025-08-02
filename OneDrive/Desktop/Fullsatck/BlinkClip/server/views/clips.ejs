@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Clips</title>
+</head>
+<body>
+  <h1>Your Highlighted Texts</h1>
+  <ul>
+    <% clips.forEach(function(clip) { %>
+      <li><%= clip.text %> - <%= clip.createdAt.toLocaleString() %></li>
+    <% }) %>
+  </ul>
+</body>
+</html>

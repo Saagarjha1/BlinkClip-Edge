@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>View Highlight | BlinkClip</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+    }
+
+    /* Modal Background */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Modal Container */
+    .modal-content {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      max-width: 768px;
+      width: 100%;
+      margin: 1rem;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    /* Close Button */
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: #666;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      color: #000;
+    }
+
+    /* Title */
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #111418;
+    }
+
+    /* Highlight Text */
+    .highlight-text {
+      color: #111418;
+      white-space: pre-wrap;
+      max-height: 70vh;
+      overflow: auto;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 1rem;
+      background-color: #f9fafb;
+    }
+
+    /* Timestamp */
+    .timestamp {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="modal-bg" id="modal">
+    <div class="modal-content">
+      <!-- Close button -->
+      <button id="closeBtn" class="close-button" aria-label="Close modal">&times;</button>
+
+      <h2 class="modal-title">Highlight Detail</h2>
+
+      <div class="highlight-text">
+        <%= clip.text %>
+      </div>
+
+      <p class="timestamp">Created: <%= new Date(clip.createdAt).toLocaleString() %></p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const closeBtn = document.getElementById('closeBtn');
+
+    closeBtn.addEventListener('click', () => {
+      window.location.href = '/dashboard';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        window.location.href = '/dashboard';
+      }
+    });
+  </script>
+
+</body>
+</html>

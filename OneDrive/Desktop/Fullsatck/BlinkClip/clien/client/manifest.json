@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Blinkclip",
+  "version": "1.0",
+  "description": "Login, highlight text, and save it to your account",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "commands",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "save-clip": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      },
+      "description": "Save selected text to server"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Blinkclip",
+    "default_icon": {
+      "48": "/icons/icon48.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png"
+  }
+}
