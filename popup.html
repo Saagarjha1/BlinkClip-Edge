@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Blinkclip</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  <!-- For icons -->
+  <style>
+    body { font-family: Arial, sans-serif; width: 300px; padding: 15px; box-sizing: border-box; background: #f8f9fa; }
+    .clip { padding: 8px; border: 1px solid #ddd; margin-bottom: 8px; font-size: 14px; background: white; border-radius: 8px; display: none; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .clip.visible { display: block; }
+    #login-form, #logged-in-section { display: none; animation: fadeIn 0.3s ease-in; }
+    #login-form.active, #logged-in-section.active { display: block; }
+    input { width: 100%; margin: 8px 0; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+    input:focus { border-color: #4CAF50; outline: none; }
+    input.invalid { border-color: #F44336; }
+    button { width: 100%; margin: 8px 0; padding: 10px; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; transition: background 0.2s; }
+    #login-btn { background: #4CAF50; }
+    #login-btn:hover { background: #45a049; }
+    #signup-btn { background: #2196F3; }
+    #signup-btn:hover { background: #1E88E5; }
+    #error { color: #F44336; font-size: 13px; margin-top: 5px; }
+    label { display: block; margin-bottom: 4px; font-size: 14px; color: #333; }
+    .input-group { position: relative; }
+    .input-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #999; }
+    .toggle-password { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #999; }
+    #toggle-mode { text-align: center; margin-top: 10px; font-size: 14px; color: #2196F3; cursor: pointer; text-decoration: underline; }
+    #load-more { background: #2196F3; margin-top: 10px; }
+    #load-more:hover { background: #1E88E5; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body>
+  <div id="login-form" class="active">
+    <h3 id="form-header" style="text-align: center; color: #333;">Login</h3>
+    <div class="input-group">
+      <label for="email">Email</label>
+      <i class="fas fa-envelope input-icon"></i>
+      <input type="email" id="email" placeholder="Enter your email" required style="padding-left: 35px;" />
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <i class="fas fa-lock input-icon"></i>
+      <input type="password" id="password" placeholder="Enter your password" required style="padding-left: 35px; padding-right: 35px;" />
+      <i class="fas fa-eye toggle-password" id="toggle-password"></i>
+    </div>
+    <button id="login-btn">Login</button>
+    <button id="signup-btn" style="display: none;">Sign Up</button>
+    <div id="error"></div>
+    <div id="toggle-mode">Don't have an account? Sign Up</div>
+  </div>
+
+  <div id="logged-in-section">
+    <button id="logout-btn" style="background: #F44336;">Logout</button>
+    <h4 style="margin: 15px 0 10px; color: #333;">Saved Clips</h4>
+    <div id="clipList">Loading clips...</div>
+    <button id="load-more">Load More</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
